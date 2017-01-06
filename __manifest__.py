@@ -30,7 +30,8 @@
         # 'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        'views/wechat.xml',
+        'views/setting_wizard_view.xml',
+        'views/wechat_menu.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
