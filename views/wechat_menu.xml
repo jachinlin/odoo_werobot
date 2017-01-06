@@ -1,0 +1,17 @@
+<openerp>
+    <data>
+        <!-- Top menu item -->
+        <menuitem id="menu_wechat"
+                  name="WeChat"
+                  icon="fa-wrench"
+                  web_icon="wechat,static/description/icon.png"
+                  sequence="10"
+        />
+        <menuitem id="menu_setting"
+                  name="Setting"
+                  action="wechat.action_setting"
+                  parent="wechat.menu_wechat"
+                  sequence="10"
+        />
+    </data>
+</openerp>
