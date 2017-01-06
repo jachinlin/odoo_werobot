@@ -1,0 +1,36 @@
+<openerp>
+    <data>
+        <!-- wechat setting wizard-->
+        <record id="view_setting_wizard_form" model="ir.ui.view">
+            <field name="name">wechat.settings</field>
+            <field name="model">wechat.settings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group string="Fill out the Form">
+                                <field name="app_id"/>
+                                <field name="app_secret"/>
+                            </group>
+                            <group string="Fill back the Information">
+                                <field name="url"/>
+                                <field name="token"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Apply" class="btn-primary" name="execute" type="object"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_setting"
+                    name="Wechat Setting"
+                    res_model="wechat.settings"
+                    view_mode="form"
+                    target="new"
+        />
+    </data>
+</openerp>

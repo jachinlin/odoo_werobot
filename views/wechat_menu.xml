@@ -9,7 +9,7 @@
         />
         <menuitem id="menu_setting"
                   name="Setting"
-                  action="base.ir_sequence_actions"
+                  action="wechat.action_setting"
                   parent="wechat.menu_wechat"
                   sequence="10"
         />
