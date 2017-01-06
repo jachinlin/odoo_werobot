@@ -15,17 +15,6 @@ class Setting(models.TransientModel):
     url = fields.Char('URL', readonly=True)
 
     @api.multi
-    def set_appid(self):
-        """put wechat develop information into database"""
-        self.ensure_one()
-        config = self
-        param = self.env["ir.config_parameter"]
-        param.set_param('app_id', config.app_id)
-        param.set_param('app_secret', config.app_secret)
-        param.set_param('token', config.token)
-        param.set_param('url', config.url)
-
-    @api.multi
     def set_app_id(self):
         """put wechat develop information into database"""
         self.ensure_one()
@@ -61,9 +50,22 @@ class Setting(models.TransientModel):
     def get_default_app_id(self, fields):
         """get config information from database"""
         param = self.env["ir.config_parameter"]
-        return {
-            'app_id': param.get_param('app_id'),
-            'app_secret': param.get_param('app_secret'),
-            'token': param.get_param('token', default=werobot.utils.generate_token()),
-            'url': param.get_param('url', default='/wechat'),
-        }
+        return {'app_id': param.get_param('app_id')}
+
+    @api.model
+    def get_default_app_secretd(self, fields):
+        """get config information from database"""
+        param = self.env["ir.config_parameter"]
+        return {'app_secret': param.get_param('app_secret')}
+
+    @api.model
+    def get_default_token(self, fields):
+        """get config information from database"""
+        param = self.env["ir.config_parameter"]
+        return {'token': param.get_param('token', default=werobot.utils.generate_token())}
+
+    @api.model
+    def get_default_url(self, fields):
+        """get config information from database"""
+        param = self.env["ir.config_parameter"]
+        return {'url': param.get_param('url', default='/wechat')}

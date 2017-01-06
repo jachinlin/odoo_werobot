@@ -9,6 +9,7 @@ from ..contrib import make_view
 class WeChat(http.Controller):
 
     def __init__(self):
+        """initiate wechat robot"""
         param = request.env['ir.config_parameter']
         robot.config.update(
             TOKEN=param.get_param('token'),
