@@ -10,10 +10,12 @@ class Setting(models.TransientModel):
 
     app_id = fields.Char('AppId', )
     app_secret = fields.Char('AppSecret', )
+    enable_session = fields.Boolean('Enable Session', readonly=True)
+
     token = fields.Char('Token')
     access_token = fields.Char('Access Token')
     url = fields.Char('URL', readonly=True)
-
+    
     @api.multi
     def set_app_id(self):
         """put wechat develop information into database"""
@@ -37,6 +39,14 @@ class Setting(models.TransientModel):
         config = self
         param = self.env["ir.config_parameter"]
         param.set_param('token', config.token)
+
+    @api.multi
+    def set_enable_session(self):
+        """put wechat develop information into database"""
+        self.ensure_one()
+        config = self
+        param = self.env["ir.config_parameter"]
+        param.set_param('enable_session', config.enable_session)
 
     @api.multi
     def set_url(self):
@@ -69,3 +79,9 @@ class Setting(models.TransientModel):
         """get config information from database"""
         param = self.env["ir.config_parameter"]
         return {'url': param.get_param('url', default='/wechat')}
+
+    @api.model
+    def get_default_enable_session(self, fields):
+        """get config information from database"""
+        param = self.env["ir.config_parameter"]
+        return {'enable_session': param.get_param('enable_session', default=True)}

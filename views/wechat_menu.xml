@@ -7,11 +7,19 @@
                   web_icon="wechat,static/description/icon.png"
                   sequence="10"
         />
+
+        <menuitem id="menu_users"
+                  name="Users"
+                  action="wechat.action_wechat_users"
+                  parent="wechat.menu_wechat"
+                  sequence="10"
+        />
+
         <menuitem id="menu_setting"
                   name="Setting"
                   action="wechat.action_setting"
                   parent="wechat.menu_wechat"
-                  sequence="10"
+                  sequence="40"
         />
     </data>
 </openerp>

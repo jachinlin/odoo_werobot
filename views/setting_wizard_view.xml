@@ -11,6 +11,7 @@
                             <group string="Fill out the Form">
                                 <field name="app_id"/>
                                 <field name="app_secret"/>
+                                <field name="enable_session"/>
                             </group>
                             <group string="Fill back the Information">
                                 <field name="url"/>
