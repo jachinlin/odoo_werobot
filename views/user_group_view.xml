@@ -1,0 +1,52 @@
+<openerp>
+    <data>
+        <!-- user group Tree view definition -->
+        <record model="ir.ui.view" id="view_user_group_tree">
+            <field name="name">user.group.tree</field>
+            <field name="model">user.group</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!-- user group Form view  definition-->
+        <record id="view_user_group_form" model="ir.ui.view">
+            <field name="name">user.group.form</field>
+            <field name="model">user.group</field>
+            <field name="arch" type="xml">
+                <form string="Wechat users">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" default_focus="1" placeholder="Name" required='1'/></h1>
+                        </div>
+                        <notebook>
+                            <page string="Users">
+                                  <field name="user_ids">
+                                      <tree>
+                                          <field name="name"/>
+                                          <field name="mobile"/>
+                                      </tree>
+                                  </field>
+                            </page>
+                            <page string="Internal Notes">
+                                  <field name="comment" placeholder="Internal note..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on user group -->
+        <record model="ir.actions.act_window" id="action_user_group">
+            <field name="name">user.group</field>
+            <field name="res_model">user.group</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</openerp>

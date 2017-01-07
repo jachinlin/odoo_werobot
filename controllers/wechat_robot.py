@@ -2,7 +2,7 @@
 
 from odoo import http
 from odoo.http import request
-from ..models import robot
+from ..handlers import robot
 from ..contrib import make_view
 
 

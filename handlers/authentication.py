@@ -1,14 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from werobot import WeRoBot
 from odoo.http import request
-
-
-class WechatRobot(WeRoBot):
-    pass
-
-
-robot = WechatRobot(enable_session=True)
+from . import robot
 
 
 @robot.text
@@ -22,7 +15,7 @@ def authentication(message, session):
         if not user:
             return u"输入信息错误或者该账号不存在"
         if user.wechat_openid:
-            return u"输入信息错误或者该账号不存在"
+            return u"该账号已绑定，不需要重复绑定"
         user.wechat_openid = message.source
         return u"已绑定用户:" + user.name
     if message.content == u"微信用户认证":
@@ -30,7 +23,5 @@ def authentication(message, session):
         return u"请回复用户账号/名字/手机号"
 
     return 'hi & i love u '
-
-
 
 

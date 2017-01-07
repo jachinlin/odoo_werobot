@@ -1,25 +1,16 @@
 <openerp>
     <data>
         <!-- Top menu item -->
-        <menuitem id="menu_wechat"
-                  name="WeChat"
-                  icon="fa-wrench"
-                  web_icon="wechat,static/description/icon.png"
-                  sequence="10"
-        />
+        <menuitem id="menu_wechat" name="微信" icon="fa-wrench" web_icon="wechat,static/description/icon.png" sequence="10"/>
 
-        <menuitem id="menu_users"
-                  name="Users"
-                  action="wechat.action_wechat_users"
-                  parent="wechat.menu_wechat"
-                  sequence="10"
-        />
+        <menuitem id="menu_users_main" name="用户" parent="wechat.menu_wechat" sequence="10"/>
+        <menuitem id="menu_user_type" name="用户组" action="wechat.action_user_group" parent="wechat.menu_users_main" sequence="10"/>
+        <menuitem id="menu_users" name="用户" action="wechat.action_wechat_users" parent="wechat.menu_users_main" sequence="20"/>
 
-        <menuitem id="menu_setting"
-                  name="Setting"
-                  action="wechat.action_setting"
-                  parent="wechat.menu_wechat"
-                  sequence="40"
-        />
+        <menuitem id="menu_reply_main" name="自动回复" parent="wechat.menu_wechat" sequence="20"/>
+        <menuitem id="menu_reply_category" name="问题归类" action="wechat.action_reply_category" parent="wechat.menu_reply_main" sequence="10"/>
+        <menuitem id="menu_reply" name="自动回复" action="wechat.action_reply" parent="wechat.menu_reply_main" sequence="20"/>
+
+        <menuitem id="menu_setting" name="设置" action="wechat.action_setting" parent="wechat.menu_wechat" sequence="40"/>
     </data>
 </openerp>
