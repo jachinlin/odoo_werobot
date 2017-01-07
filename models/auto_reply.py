@@ -8,6 +8,7 @@ class ReplyCategory(models.Model):
     _name = 'reply.category'
 
     name = fields.Char(string=u'问题类别', required=True)
+    reply_ids = fields.One2many('reply', 'category_id', string=u'热门问题')
 
 
 class Reply(models.Model):
