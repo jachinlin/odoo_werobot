@@ -9,4 +9,5 @@ robot = WechatRobot(enable_session=True)
 # 添加 handler
 from . import authentication
 from . import reply_category
+from . import reply
 
