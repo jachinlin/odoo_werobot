@@ -1,0 +1,64 @@
+<openerp>
+    <data>
+        <!-- reply Tree view definition -->
+        <record model="ir.ui.view" id="view_reply_tree">
+            <field name="name">reply.tree</field>
+            <field name="model">reply</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <!-- reply Form view  definition-->
+        <record id="view_reply_form" model="ir.ui.view">
+            <field name="name">reply.form</field>
+            <field name="model">reply</field>
+            <field name="arch" type="xml">
+                <form string="Wechat users">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1><field name="name" default_focus="1" placeholder="Name" required='1'/></h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="category_id"/>
+                                <field name="user_group_ids" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="state"/>
+                                <field name="text_reply_id"/>
+                                <field name="image_reply_id"/>
+                                <field name="articles_reply_id"/>
+                                <field name="voice_reply_id"/>
+                                <field name="video_reply_id"/>
+                                <field name="music_reply_id"/>
+                                <field name="success_reply_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- actions opening views on reply -->
+        <record model="ir.actions.act_window" id="action_reply">
+            <field name="name">reply</field>
+            <field name="res_model">reply</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- actions opening views on reply categore-->
+        <record model="ir.actions.act_window" id="action_reply_category">
+            <field name="name">reply.category</field>
+            <field name="res_model">reply.category</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</openerp>
