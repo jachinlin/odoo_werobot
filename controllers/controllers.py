@@ -18,3 +18,5 @@ from odoo import http
 #         return http.request.render('wechat.object', {
 #             'object': obj
 #         })
+
+
