@@ -34,7 +34,7 @@
                             <group>
                                 <field name="login" string="Account"/>
                                 <field name="title" placeholder="e.g. Mr."/>
-                                <field name="function" placeholder="e.g. Sales Director"/>
+                                <field name="user_group_id"/>
                             </group>
                             <group>
                                 <field name="phone" widget="phone"/>
@@ -60,6 +60,7 @@
             <field name="name">wechat users</field>
             <field name="res_model">res.users</field>
             <field name="domain">[('wechat_openid', '!=', False)]</field>
+            <field name="context">{'group_by':'user_group_id'}</field>
             <field name="view_mode">tree,form</field>
         </record>
         <record id="aciton_view_res_users_tree" model="ir.actions.act_window.view">

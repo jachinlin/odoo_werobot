@@ -7,12 +7,22 @@
                   web_icon="wechat,static/description/icon.png"
                   sequence="10"
         />
-
+        <menuitem id="menu_users_main"
+                  name="Users"
+                  parent="wechat.menu_wechat"
+                  sequence="10"
+        />
+        <menuitem id="menu_user_type"
+                  name="User Group"
+                  action="wechat.action_user_group"
+                  parent="wechat.menu_users_main"
+                  sequence="10"
+        />
         <menuitem id="menu_users"
                   name="Users"
                   action="wechat.action_wechat_users"
-                  parent="wechat.menu_wechat"
-                  sequence="10"
+                  parent="wechat.menu_users_main"
+                  sequence="20"
         />
 
         <menuitem id="menu_setting"
