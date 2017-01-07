@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
+import re
 from odoo.http import request
 from . import robot
 
 
-@robot.text
+@robot.filter(re.compile('^[^#|\d].*$'))
 def authentication(message, session):
     """binding wechat users"""
     if session.get('is_wechat_authenticated'):
