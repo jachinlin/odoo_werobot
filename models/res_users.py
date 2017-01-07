@@ -4,9 +4,19 @@ from odoo import api, fields, models
 
 
 class ResUsers(models.Model):
+    _name = "user.group"
+
+    name = fields.Char(string='Name', requried=True)
+    user_ids = fields.One2many('res.users', 'user_group_id', string='Users')
+    comment = fields.Text('Additional Information')
+    active = fields.Boolean('Active', default=True)
+
+
+class ResUsers(models.Model):
     _inherit = 'res.users'
 
     wechat_openid = fields.Char(string=u'Wechat OpenID', help=u'Wechat OpenID')
+    user_group_id = fields.Many2one('user.group', string='User Group')
 
     @api.model
     def create(self, vals):

@@ -31,6 +31,8 @@
         'views/views.xml',
         'views/templates.xml',
         'views/res_users_view.xml',
+        'views/user_group_view.xml',
+        'views/auto_reply_view.xml',
         'views/setting_wizard_view.xml',
         'views/wechat_menu.xml',
     ],
