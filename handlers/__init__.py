@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from ..models.wechat_robot import WechatRobot
+from ..models import WechatRobot
 
 # 实例化微信机器人
 robot = WechatRobot(enable_session=True)

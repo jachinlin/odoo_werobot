@@ -24,6 +24,18 @@ def make_view(robot):
         def hello(message):
             return 'Hello World!'
 
+        from odoo import http
+        from odoo.http import request
+
+        class WeChat(http.Controller):
+
+            @http.route('/wechat', type='http', auth="none", methods=['GET', 'POST'], csrf=False)
+            def wechat(self, *args, **kwargs):
+                return make_view(robot)()
+
+                from flask import Flask
+                from werobot.contrib.flask import make_view
+
     :param robot: 一个 BaseRoBot 实例
     :return: 一个标准的 Odoo view
     """
