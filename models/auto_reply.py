@@ -86,12 +86,35 @@ class Reply(models.Model):
                                                'video': [('invisible', True)],
                                                'music': [('invisible', True)]})
 
+    @api.multi
+    def werobot_reply_format(self):
+        self.ensure_one()
+        if self.state == 'text':
+            result = self.text_reply_id.answer
+        elif self.state == 'image':
+            result = {}
+        elif self.state == 'articles':
+            result = {}
+        elif self.state == 'voice':
+            result = {}
+        elif self.state == 'music':
+            result = {}
+        elif self.state == 'video':
+            result = {}
+        elif self.state == 'success':
+            result = {}
+        else:
+            result = {}
+
+        return result
+
 
 class TextReply(models.Model):
     """文本信息回复"""
     _name = 'text.reply'
 
-    name = fields.Char()
+    name = fields.Char(string=u'问题', required=True)
+    answer = fields.Text(string=u'回复', required=True)
 
 
 class ImageReply(models.Model):

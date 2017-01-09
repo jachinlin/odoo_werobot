@@ -51,14 +51,5 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <!-- actions opening views on reply categore-->
-        <record model="ir.actions.act_window" id="action_reply_category">
-            <field name="name">reply.category</field>
-            <field name="res_model">reply.category</field>
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-
     </data>
 </openerp>
