@@ -1,5 +1,33 @@
 <openerp>
     <data>
+        <!-- articls.replye form view-->
+        <record id="view_airticls_reply_form" model="ir.ui.view">
+            <field name="name">articles.reply</field>
+            <field name="model">articles.reply</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="文章行">
+                                <field name="article_ids">
+                                    <tree>
+                                        <field name="name"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
         <!-- actions opening views on reply categore-->
         <record model="ir.actions.act_window" id="action_reply_category">
@@ -14,6 +42,15 @@
         <record model="ir.actions.act_window" id="action_text_reply">
             <field name="name">text.reply</field>
             <field name="res_model">text.reply</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- actions opening views on articles reply -->
+        <record model="ir.actions.act_window" id="action_articles_reply">
+            <field name="name">articles.reply</field>
+            <field name="res_model">articles.reply</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="view_mode">tree,form</field>

@@ -1,0 +1,42 @@
+<openerp>
+    <data>
+        <!-- articl form view-->
+        <record id="view_article_form" model="ir.ui.view">
+            <field name="name">article</field>
+            <field name="model">article</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="image_url"/>
+                                <field name="article_url"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+        <!-- actions opening views on article -->
+        <record model="ir.actions.act_window" id="action_article">
+            <field name="name">article</field>
+            <field name="res_model">article</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</openerp>

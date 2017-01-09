@@ -9,9 +9,12 @@
 
         <menuitem id="menu_reply_main" name="自动回复" parent="wechat.menu_wechat" sequence="20"/>
         <menuitem id="menu_reply_category" name="问题归类" action="wechat.action_reply_category" parent="wechat.menu_reply_main" sequence="10"/>
-        <menuitem id="menu_reply_info" name="回复信息" parent="wechat.menu_reply_main" sequence="20"/>
-        <menuitem id="menu_text_reply" name="文本回复" action="wechat.action_text_reply" parent="wechat.menu_reply_info" sequence="10"/>
         <menuitem id="menu_reply" name="自动回复" action="wechat.action_reply" parent="wechat.menu_reply_main" sequence="30"/>
+
+        <menuitem id="menu_reply_info" name="回复信息" parent="wechat.menu_wechat" sequence="30"/>
+        <menuitem id="menu_text_reply" name="文本回复" action="wechat.action_text_reply" parent="wechat.menu_reply_info" sequence="10"/>
+        <menuitem id="menu_articles_reply" name="图文回复" action="wechat.action_articles_reply" parent="wechat.menu_reply_info" sequence="20"/>
+        <menuitem id="menu_article" name="文章" action="wechat.action_article" parent="wechat.menu_reply_info" sequence="40"/>
 
         <menuitem id="menu_setting" name="设置" action="wechat.action_setting" parent="wechat.menu_wechat" sequence="40"/>
     </data>

@@ -90,11 +90,13 @@ class Reply(models.Model):
     def werobot_reply_format(self):
         self.ensure_one()
         if self.state == 'text':
-            result = self.text_reply_id.answer
+            result = self.text_reply_id.name + '\n' + self.text_reply_id.answer
         elif self.state == 'image':
             result = {}
         elif self.state == 'articles':
-            result = {}
+            article_ids = self.articles_reply_id.article_ids
+            result = [[article.name, article.description, article.image_url, article.article_url]
+                      for article in article_ids]
         elif self.state == 'voice':
             result = {}
         elif self.state == 'music':
@@ -104,7 +106,7 @@ class Reply(models.Model):
         elif self.state == 'success':
             result = {}
         else:
-            result = {}
+            result = 'success'
 
         return result
 
@@ -113,7 +115,7 @@ class TextReply(models.Model):
     """文本信息回复"""
     _name = 'text.reply'
 
-    name = fields.Char(string=u'问题', required=True)
+    name = fields.Char(string=u'标题', required=True)
     answer = fields.Text(string=u'回复', required=True)
 
 
@@ -142,7 +144,26 @@ class ArticlesReply(models.Model):
     """图文信息回复"""
     _name = 'articles.reply'
 
-    name = fields.Char()
+    name = fields.Char(string=u'标题')
+    article_ids = fields.Many2many('article', string=u'文章列表', required=True)
+
+    @api.model
+    def create(self, vals):
+        """重写 检查文章数量"""
+        article_ids = vals.get('article_ids')
+        if len(article_ids[0][2]) > 8:
+            raise models.UserError(u'图文回复文章数量最多为8篇！')
+
+        return super(ArticlesReply, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        """重写 检查文章数量"""
+        article_ids = vals.get('article_ids')
+        if len(article_ids[0][2]) > 8:
+            raise models.UserError(u'图文回复文章数量最多为8篇！')
+
+        return super(ArticlesReply, self).write(vals)
 
 
 class MusicReply(models.Model):
@@ -157,4 +178,17 @@ class SuccessReply(models.Model):
     _name = 'success.reply'
 
     name = fields.Char()
+
+
+class Article(models.Model):
+    """文章"""
+    _name = 'article'
+
+    name = fields.Char(u'标题', required=True)
+    description = fields.Char(u'描述')
+    image_url = fields.Char(string=u'图片')
+    article_url = fields.Char(string=u'文章')
+
+
+
 
