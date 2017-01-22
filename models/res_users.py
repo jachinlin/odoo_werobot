@@ -3,13 +3,23 @@
 from odoo import api, fields, models
 
 
-class ResUsers(models.Model):
+class UserGroup(models.Model):
     _name = "user.group"
 
     name = fields.Char(string='Name', requried=True)
     user_ids = fields.One2many('res.users', 'user_group_id', string='Users')
+    channel_id = fields.Many2one("mail.channel", string=u'讨论频道')
     comment = fields.Text('Additional Information')
     active = fields.Boolean('Active', default=True)
+
+    @api.model
+    def create(self, vals):
+        """创建用户组时，创建相应的频道"""
+        group = super(UserGroup, self).create(vals)
+        channel = self.env['mail.channel'].create({'name': group.name})
+        channel.channel_partner_ids |= self.env.user.partner_id
+        group.channel_id = channel
+        return group
 
 
 class ResUsers(models.Model):
