@@ -5,7 +5,8 @@
 
         <menuitem id="menu_users_main" name="用户" parent="wechat.menu_wechat" sequence="10"/>
         <menuitem id="menu_user_type" name="用户组" action="wechat.action_user_group" parent="wechat.menu_users_main" sequence="10"/>
-        <menuitem id="menu_users" name="用户" action="wechat.action_wechat_users" parent="wechat.menu_users_main" sequence="20"/>
+        <menuitem id="menu_users" name="用户" action="wechat.action_users" parent="wechat.menu_users_main" sequence="20"/>
+        <menuitem id="menu_wechat_users" name="微信用户" action="wechat.action_wechat_users" parent="wechat.menu_users_main" sequence="30"/>
 
         <menuitem id="menu_reply_main" name="自动回复" parent="wechat.menu_wechat" sequence="20"/>
         <menuitem id="menu_reply_category" name="问题归类" action="wechat.action_reply_category" parent="wechat.menu_reply_main" sequence="10"/>

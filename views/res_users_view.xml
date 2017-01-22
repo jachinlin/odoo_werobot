@@ -56,6 +56,12 @@
         </record>
 
         <!-- actions opening views on res.users -->
+        <record model="ir.actions.act_window" id="action_users">
+            <field name="name">users</field>
+            <field name="res_model">res.users</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- actions opening views on wechat res.users -->
         <record model="ir.actions.act_window" id="action_wechat_users">
             <field name="name">wechat users</field>
             <field name="res_model">res.users</field>
