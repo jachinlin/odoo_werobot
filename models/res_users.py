@@ -41,8 +41,11 @@ class ResUsers(models.Model):
         exist_mobiles = self.env['res.users'].search([]).mapped('mobile')
         if user_mobile and (user_mobile in exist_mobiles):
             raise models.ValidationError('You can not have two users with the same mobile')
-
-        return super(ResUsers, self).create(vals)
+        # 关注用户组对应的讨论组
+        user = super(ResUsers, self).create(vals)
+        if user.user_group_id.channel_id:
+            user.user_group_id.channel_id.channel_partner_ids |= user.partner_id
+        return user
 
     @api.multi
     def write(self, vals):
